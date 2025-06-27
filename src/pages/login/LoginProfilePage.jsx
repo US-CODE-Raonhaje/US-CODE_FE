@@ -52,15 +52,18 @@ export default function LoginProfilePage() {
           />
         </form>
         <div className="flex justify-center">
-          {address ? (
-            <button
-              className="mt-10 w-full max-w-xs p-5 text-center text-xl text-bold rounded-lg border-none
-              text-black bg-white shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
-            >
-              위치 정보를 인증해주세요
-            </button>
+          {address ? ( //인증됐다면
+            <div className="w-full max-w-xs mx-auto">
+              <button
+                className="mt-10 w-full p-5 text-center text-xl font-bold rounded-lg border-none
+    text-black bg-white shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
+              >
+                위치 정보를 인증해주세요
+              </button>
+              <p className="mt-3 text-base text-white">{address}</p>
+            </div>
           ) : (
-            <button
+            <button //인증안됐다면
               className="mt-10 w-full max-w-xs p-5 text-center text-xl text-bold rounded-lg border-none
               bg-gray-400 shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
               onClick={() => navigate("/login/location")}

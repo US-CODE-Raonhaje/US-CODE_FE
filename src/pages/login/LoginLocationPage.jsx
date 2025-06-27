@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import arrow from "../../assets/icons/downarrow.png";
 
 export default function LoginLocationPage() {
   const APP_KEY = import.meta.env.VITE_KAKAO_MAPS_API_KEY;
@@ -82,12 +83,18 @@ export default function LoginLocationPage() {
 
   return (
     <div className="w-screen h-screen bg-Background flex flex-col">
-      <div className="p-2 mt-5 ml-2 flex-low flex">
-        <button>00</button>
-        <h2 className="text-2xl font-bold ">위치 정보 등록하기</h2>
+      <div className="p-2 mt-6 ml-1 flex-low flex">
+        <button
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <img src={arrow} alt="icon" className="w-15 h-15 -mt-4" />
+        </button>
+        <h2 className="text-2xl font-bold mt-1 ">위치 정보 등록하기</h2>
       </div>
       {error && <div style={{ color: "red" }}>{error}</div>}
-      <div className="mt-4">
+      <div className="mt-3">
         <div
           ref={mapRef}
           id="map"
