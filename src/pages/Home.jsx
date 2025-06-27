@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import BottomNavBar from "../components/BottomNavBar";
 import searchIcon from "../assets/icons/search.png";
@@ -8,7 +8,10 @@ import catImage from "../assets/illustrations/cat1.png";
 import MapBox from "../components/MapBox";
 
 function Home() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/login");
+  }, []);
 
   return (
     <div className="home-container">
@@ -49,13 +52,13 @@ function Home() {
           width: "297px",
           height: "303px",
           borderRadius: "42px",
-          border: "3px solid #FFFFFF", 
-          backgroundColor: "#1e1e1e", 
+          border: "3px solid #FFFFFF",
+          backgroundColor: "#1e1e1e",
           overflow: "hidden",
           cursor: "pointer",
           zIndex: 2,
         }}
-        onClick={() => navigate("/map")} 
+        onClick={() => navigate("/map")}
       >
         <MapBox />
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const MapBox = ({ center = { lat: 37.5665, lng: 126.9780 } }) => {
+const MapBox = ({ center = { lat: 37.5665, lng: 126.978 } }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -14,13 +14,17 @@ const MapBox = ({ center = { lat: 37.5665, lng: 126.9780 } }) => {
         window.kakao.maps.load(() => {
           const container = mapRef.current;
           const options = {
-            center: new window.kakao.maps.LatLng(center.lat, center.lng), 
+            center: new window.kakao.maps.LatLng(center.lat, center.lng),
             level: 3,
           };
           const map = new window.kakao.maps.Map(container, options);
 
-          const markerPosition = new window.kakao.maps.LatLng(center.lat, center.lng);
-          const pouchUrl = new URL("../assets/icons/pouch.png", import.meta.url).href;
+          const markerPosition = new window.kakao.maps.LatLng(
+            center.lat,
+            center.lng
+          );
+          const pouchUrl = new URL("../assets/icons/pouch.png", import.meta.url)
+            .href;
 
           const markerImage = new window.kakao.maps.MarkerImage(
             pouchUrl,
@@ -42,7 +46,7 @@ const MapBox = ({ center = { lat: 37.5665, lng: 126.9780 } }) => {
     };
 
     document.head.appendChild(script);
-  }, [center]); 
+  }, [center]);
 
   return (
     <div
