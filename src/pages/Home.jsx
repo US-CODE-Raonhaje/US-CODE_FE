@@ -9,9 +9,9 @@ import MapBox from "../components/MapBox";
 
 function Home() {
   const navigate = useNavigate();
-  useEffect(() => {
-    navigate("/login");
-  }, []);
+  // useEffect(() => {
+  //   navigate("/login");
+  // }, []);
 
   return (
     <div className="home-container">

@@ -12,7 +12,7 @@ export default function LoginPage() {
           className="h-14 bg-white flex justify-around items-center shadow text-black"
           onClick={() => navigate("/login/profile")}
         >
-          카카오로그인
+          테스트용
         </button>
       </div>
     </>

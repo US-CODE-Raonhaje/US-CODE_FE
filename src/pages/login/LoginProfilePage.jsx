@@ -3,19 +3,29 @@ import TextInput from "../../components/TextInput";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function LoginProfilePage() {
+  const location = useLocation();
+  const {
+    address,
+    username: initUsername = "",
+    age: initAge = "",
+  } = location.state || {};
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      username: initUsername,
+      age: initAge,
+    },
+  });
 
   const username = watch("username", "");
   const age = watch("age", "");
   const onSubmit = (data) => {};
   let navigate = useNavigate();
-  const location = useLocation();
-  const { address } = location.state || {};
+  const isProfileValid = username && age && !errors.username && !errors.age;
 
   return (
     <div className="w-screen h-screen bg-Background flex flex-col">
@@ -52,21 +62,25 @@ export default function LoginProfilePage() {
           />
         </form>
         <div className="flex justify-center">
-          {address ? ( //인증됐다면
+          {isProfileValid ? ( //필드 값이 입력되면
             <div className="w-full max-w-xs mx-auto">
               <button
                 className="mt-10 w-full p-5 text-center text-xl font-bold rounded-lg border-none
     text-black bg-white shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
+                onClick={() =>
+                  navigate("/login/location", {
+                    state: { username, age },
+                  })
+                }
               >
                 위치 정보를 인증해주세요
               </button>
               <p className="mt-3 text-base text-white">{address}</p>
             </div>
           ) : (
-            <button //인증안됐다면
+            <button //필드이 입력 안되있으면
               className="mt-10 w-full max-w-xs p-5 text-center text-xl text-bold rounded-lg border-none
               bg-gray-400 shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
-              onClick={() => navigate("/login/location")}
             >
               위치 정보를 인증해주세요
             </button>
@@ -78,7 +92,9 @@ export default function LoginProfilePage() {
         <div
           className={`w-full max-w-xs p-5 text-center text-xl text-bold rounded-lg border-none
           ${
-            address ? "bg-white text-black" : "bg-gray-400 text-white"
+            address && isProfileValid
+              ? "bg-white text-black"
+              : "bg-gray-400 text-white"
           } shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]`}
         >
           완료하기

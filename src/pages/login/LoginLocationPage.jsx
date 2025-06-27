@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import arrow from "../../assets/icons/downarrow.png";
 
 export default function LoginLocationPage() {
@@ -8,6 +8,8 @@ export default function LoginLocationPage() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const { username = "", age = "" } = location.state || {};
   const mapRef = useRef(null);
   let navigate = useNavigate();
   useEffect(() => {
@@ -113,11 +115,11 @@ export default function LoginLocationPage() {
              bg-gray-400 shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
             onClick={() =>
               navigate("/login/profile", {
-                state: { address },
+                state: { username, age, address },
               })
             }
           >
-            위치 정보를 인증해주세요
+            위치 인증 완료하기
           </button>
         </div>
       </div>
