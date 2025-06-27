@@ -1,19 +1,33 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import BottomNavBar from "../components/BottomNavBar";
 import searchIcon from "../assets/icons/search.png";
 import bellIcon from "../assets/icons/bell.png";
 import catImage from "../assets/illustrations/cat1.png";
 import MapBox from "../components/MapBox";
+import storyImage from "../assets/icons/story.png";
 
-function Home() {
-  const navigate = useNavigate(); 
+function Home({ storyCount }) {
+  const navigate = useNavigate();
+  const [hasNewAlert, setHasNewAlert] = useState(true);
 
   return (
     <div className="home-container">
       <img src={searchIcon} alt="search" className="icon search" />
-      <img src={bellIcon} alt="bell" className="icon bell" />
+
+      <div style={{ position: "relative" }}>
+        <img
+          src={bellIcon}
+          alt="bell"
+          className="icon bell"
+          onClick={() => {
+            navigate("/Notification");
+            setHasNewAlert(false);
+          }}
+        />
+        {hasNewAlert && <div className="red-dot" />}
+      </div>
 
       <div className="small-box" style={{ left: "24px" }}></div>
       <div className="small-box" style={{ left: "88px" }}></div>
@@ -23,6 +37,14 @@ function Home() {
       <div className="cat-card">
         <img src={catImage} alt="cat" className="cat-img" />
       </div>
+
+      {storyCount === 0 && (
+        <img
+          src={storyImage}
+          alt="등록 안내"
+          className="no-story-img"
+        />
+      )}
 
       <div className="cat-text">
         <p>
@@ -34,7 +56,7 @@ function Home() {
         </p>
         <p>
           <span>이야기는 </span>
-          <span className="bold">3</span>
+          <span className="bold">{storyCount}</span>
           <span>개입니다.</span>
         </p>
       </div>
@@ -49,13 +71,13 @@ function Home() {
           width: "297px",
           height: "303px",
           borderRadius: "42px",
-          border: "3px solid #FFFFFF", 
-          backgroundColor: "#1e1e1e", 
+          border: "3px solid #FFFFFF",
+          backgroundColor: "#1e1e1e",
           overflow: "hidden",
           cursor: "pointer",
           zIndex: 2,
         }}
-        onClick={() => navigate("/map")} 
+        onClick={() => navigate("/map")}
       >
         <MapBox />
       </div>
