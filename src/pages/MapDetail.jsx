@@ -216,7 +216,8 @@ function MapDetail() {
                   zIndex: 1,
                 }}
               />
-              <div
+              <div 
+                onClick={() => navigate("/post")}     
                 style={{
                   width: "236px",
                   height: "43px",
