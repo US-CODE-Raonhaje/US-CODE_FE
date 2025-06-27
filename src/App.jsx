@@ -9,6 +9,11 @@ function App() {
     <BrowserRouter>
       <Frame>
         <Routes>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+        <Route
+          path="/login/profile"
+          element={<LoginProfilePage></LoginProfilePage>}
+        ></Route>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<MapDetail />} />
           <Route path="/mypage" element={<MyPage />} />
@@ -17,6 +22,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
-
+export default App
