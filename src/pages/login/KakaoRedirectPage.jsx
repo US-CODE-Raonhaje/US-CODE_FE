@@ -16,20 +16,20 @@ export default function KakaoRedirectPage() {
     }
 
     if (code) {
+      console.log(code);
       axios
-        .post("/api/v1/auth/kakao", { code })
+        .post(`http://34.64.144.67/api/v1/auth/kakao?code=${code}`)
         .then((res) => {
           const { accessToken, refreshToken, isAdditionalInfoRequired } =
             res.data;
+          console.log(isAdditionalInfoRequired);
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem("refreshToken", refreshToken);
-          isAdditionalInfoRequired
-            ? () => {
-                navigate("/");
-              }
-            : () => {
-                navigate("/login/profile");
-              };
+          if (isAdditionalInfoRequired) {
+            navigate("/login/profile");
+          } else {
+            navigate("/");
+          }
         })
         .catch(() => {
           alert("카카오 로그인 실패");

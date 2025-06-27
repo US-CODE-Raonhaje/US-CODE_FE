@@ -2,8 +2,10 @@ import React from "react";
 import "../styles/MyPage.css";
 import catPro from "../assets/illustrations/cat-pro.png";
 import BottomNavBar from "../components/BottomNavBar";
+import { useNavigate } from "react-router-dom";
 
 function MyPage() {
+  let navigate = useNavigate();
   return (
     <div className="mypage-container">
       <div className="profile-box">
@@ -14,7 +16,12 @@ function MyPage() {
         </div>
       </div>
 
-      <div className="menu-item">
+      <div
+        className="menu-item"
+        onClick={() => {
+          navigate("/mypage/posts");
+        }}
+      >
         <div className="menu-text">내가 쓴 글</div>
         <div className="menu-divider"></div>
       </div>
@@ -39,7 +46,7 @@ function MyPage() {
         <div className="menu-divider"></div>
       </div>
 
-      <BottomNavBar /> 
+      <BottomNavBar />
     </div>
   );
 }

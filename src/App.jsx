@@ -8,6 +8,7 @@ import LoginProfilePage from "./pages/login/LoginProfilePage";
 import LoginLocationPage from "./pages/login/LoginLocationPage";
 import KakaoRedirectPage from "./pages/login/KakaoRedirectPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MyPosts from "./pages/MyPosts";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         path="/kakao-redirect"
         element={<KakaoRedirectPage></KakaoRedirectPage>}
       />
+      <Route path="mypage/posts" element={<MyPosts />}></Route>
     </Routes>
   );
 }
