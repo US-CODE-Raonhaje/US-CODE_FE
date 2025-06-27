@@ -6,6 +6,7 @@ import MyPage from "./pages/MyPage";
 import LoginPage from "./pages/login/LoginPage";
 import LoginProfilePage from "./pages/login/LoginProfilePage";
 import LoginLocationPage from "./pages/login/LoginLocationPage";
+import KakaoRedirectPage from "./pages/login/KakaoRedirectPage";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/map" element={<MapDetail />} />
       <Route path="/mypage" element={<MyPage />} />
+      <Route
+        path="/kakao-redirect"
+        element={<KakaoRedirectPage></KakaoRedirectPage>}
+      />
     </Routes>
   );
 }
