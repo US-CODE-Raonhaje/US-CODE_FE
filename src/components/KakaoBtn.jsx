@@ -1,3 +1,5 @@
+import kakao_logo from "../assets/icons/kakao_login_original.png";
+
 const KAKAO_REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
 const KAKAO_REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
@@ -16,11 +18,16 @@ export default function KakaoBtn() {
   };
 
   return (
-    <button
-      onClick={handleLogin}
-      className="w-full p-3 bg-yellow-300 rounded-lg font-bold"
-    >
-      카카오로 로그인
-    </button>
+    <div className="flex justify-center">
+      <button
+        onClick={handleLogin}
+        className="w-full p-4 m-10  bg-yellow-300 rounded-3xl font-bold"
+      >
+        <div className="flex justify-center text-black">
+          <img src={kakao_logo} alt="카카오 로고" className="w-6 h-6 mr-2" />
+          카카오로 시작하기
+        </div>
+      </button>
+    </div>
   );
 }

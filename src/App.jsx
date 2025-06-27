@@ -7,20 +7,22 @@ import LoginPage from "./pages/login/LoginPage";
 import LoginProfilePage from "./pages/login/LoginProfilePage";
 import LoginLocationPage from "./pages/login/LoginLocationPage";
 import KakaoRedirectPage from "./pages/login/KakaoRedirectPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+      <Route path="/login" element={<LoginPage />}></Route>
+      <Route path="/login/profile" element={<LoginProfilePage />}></Route>
+      <Route path="/login/location" element={<LoginLocationPage />}></Route>
       <Route
-        path="/login/profile"
-        element={<LoginProfilePage></LoginProfilePage>}
-      ></Route>
-      <Route
-        path="/login/location"
-        element={<LoginLocationPage></LoginLocationPage>}
-      ></Route>
-      <Route path="/" element={<Home />} />
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/map" element={<MapDetail />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route

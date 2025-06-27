@@ -6,16 +6,34 @@ export default function KakaoRedirectPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const code = new URL(window.location.href).searchParams.get("code");
+    const params = new URL(window.location.href).searchParams;
+    const code = params.get("code");
+    const error = params.get("error");
+
+    if (error) {
+      navigate("/login");
+      return;
+    }
+
     if (code) {
       axios
         .post("/api/v1/auth/kakao", { code })
         .then((res) => {
-          // 로그인 성공 처리
-          navigate("/");
+          const { accessToken, refreshToken, isAdditionalInfoRequired } =
+            res.data;
+          localStorage.setItem("accessToken", accessToken);
+          localStorage.setItem("refreshToken", refreshToken);
+          isAdditionalInfoRequired
+            ? () => {
+                navigate("/");
+              }
+            : () => {
+                navigate("/login/profile");
+              };
         })
         .catch(() => {
           alert("카카오 로그인 실패");
+          navigate("/login");
         });
     }
   }, [navigate]);

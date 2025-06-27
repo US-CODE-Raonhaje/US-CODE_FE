@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import TextInput from "../../components/TextInput";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function LoginProfilePage() {
   const location = useLocation();
@@ -96,6 +97,35 @@ export default function LoginProfilePage() {
               ? "bg-white text-black"
               : "bg-gray-400 text-white"
           } shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]`}
+          {...(address && isProfileValid
+            ? {
+                onClick: () => {
+                  const accessToken = localStorage.getItem("accessToken");
+                  const refreshToken = localStorage.getItem("refreshToken");
+                  axios
+                    .post(
+                      "/api/v1/auth/sinup",
+                      {
+                        nickname: username,
+                        age: Number(age),
+                        location: address,
+                      },
+                      {
+                        headers: {
+                          Authorization: `Bearer ${accessToken}`,
+                          "Refresh-Token": refreshToken,
+                        },
+                      }
+                    )
+                    .then((res) => {
+                      navigate("/");
+                    })
+                    .catch(() => {
+                      alert("로그인 실패");
+                    });
+                },
+              }
+            : {})}
         >
           완료하기
         </div>
