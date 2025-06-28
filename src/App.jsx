@@ -7,6 +7,8 @@ import Frame from './components/Frame';
 import MyPage from './pages/MyPage';
 import Post from './pages/Post';
 import Notification from './pages/Notification';
+import StoryDetail from "./pages/StoryDetail"; 
+import MyPageEditable from "./pages/MyPageEditable"; 
 
 function App() {
   const [storyCount, setStoryCount] = useState(0);
@@ -26,6 +28,8 @@ function App() {
           <Route path="/map" element={<MapDetail />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/notification" element={<Notification />} />
+          <Route path="/story-detail" element={<StoryDetail />} />
+          <Route path="/pages/editable" element={<MyPageEditable />} />
         </Routes>
       </Frame>
     </BrowserRouter>

@@ -91,33 +91,36 @@ function Post() {
             />
             <div className="title-underline"></div>
 
-            <div className="date-selector">
-              <span onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                {timeType}
-              </span>
+            <div className="custom-dropdown">
               <div
-                className="arrow"
+                className="dropdown-top"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              ></div>
-            </div>
-
-            {isDropdownOpen && (
-              <div className="date-options">
-                {timeTypes
-                  .filter((type) => type !== timeType)
-                  .map((type) => (
-                    <span
-                      key={type}
-                      onClick={() => {
-                        setTimeType(type);
-                        setIsDropdownOpen(false);
-                      }}
-                    >
-                      {type}
-                    </span>
-                  ))}
+              >
+                <div className="selected-time">{timeType}</div>
+                <div className="dropdown-icon">
+                  {isDropdownOpen ? "⌄" : "⌃"}
+                </div>
               </div>
-            )}
+
+              {isDropdownOpen && (
+                <div className="dropdown-list">
+                  {timeTypes
+                    .filter((type) => type !== timeType)
+                    .map((type) => (
+                      <div
+                        key={type}
+                        className="dropdown-item"
+                        onClick={() => {
+                          setTimeType(type);
+                          setIsDropdownOpen(false);
+                        }}
+                      >
+                        {type}
+                      </div>
+                    ))}
+                </div>
+              )}
+            </div>
 
             <textarea
               placeholder="본문을 작성해주세요."
@@ -125,7 +128,7 @@ function Post() {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-            {title && content && (
+            {title.trim() && content.trim() && (
               <button className="submit-button" onClick={handleSubmit}>
                 작성하고 추억 확인하기
               </button>

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 
-const MapBox = ({ center = { lat: 37.5665, lng: 126.9780 } }) => {
+const MapBox = ({ center = { lat: 36.3540, lng: 128.6975 } }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
+    const apiKey = import.meta.env.VITE_KAKAO_MAP_API_KEY;
     const script = document.createElement("script");
-    script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=c4790810e72e16a15e764e906f5359cd&autoload=false";
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
     script.async = true;
 
     script.onload = () => {
@@ -14,7 +14,7 @@ const MapBox = ({ center = { lat: 37.5665, lng: 126.9780 } }) => {
         window.kakao.maps.load(() => {
           const container = mapRef.current;
           const options = {
-            center: new window.kakao.maps.LatLng(center.lat, center.lng), 
+            center: new window.kakao.maps.LatLng(center.lat, center.lng),
             level: 3,
           };
           const map = new window.kakao.maps.Map(container, options);
@@ -42,7 +42,7 @@ const MapBox = ({ center = { lat: 37.5665, lng: 126.9780 } }) => {
     };
 
     document.head.appendChild(script);
-  }, [center]); 
+  }, [center]);
 
   return (
     <div

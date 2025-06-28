@@ -35,7 +35,13 @@ function MyPage() {
   return (
     <div className="mypage-container">
       <div className="profile-box">
-        <img src={catPro} alt="고양이 프로필" className="cat-profile" />
+        <img
+          src={catPro}
+          alt="고양이 프로필"
+          className="cat-profile"
+          onClick={() => navigate("/pages/editable")}
+          style={{ cursor: "pointer" }}
+        />
         <div className="profile-text">
           <div className="name">최지한님</div>
           <div className="address">의성읍 충효로</div>
@@ -95,3 +101,4 @@ function MyPage() {
 }
 
 export default MyPage;
+

@@ -64,7 +64,6 @@
   background-color: #FFFFFF;
 }
 
-/* ====== 로그아웃 모달 ====== */
 .logout-modal {
   position: absolute;
   top: 330px;
@@ -115,7 +114,6 @@
   color: #000000;
 }
 
-/* ====== 회원 탈퇴 모달 ====== */
 .withdraw-modal {
   position: absolute;
   top: 450px;
