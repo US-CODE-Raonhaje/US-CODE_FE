@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/Post.css";
 import boxImage from "../assets/images/box.png";
 import resultImage from "../assets/images/Rec.png";
@@ -83,7 +83,6 @@ function Post() {
         ) : (
           <>
             <input
-              type="text"
               placeholder="제목"
               className="title-input"
               value={title}
@@ -91,33 +90,36 @@ function Post() {
             />
             <div className="title-underline"></div>
 
-            <div className="date-selector">
-              <span onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                {timeType}
-              </span>
+            <div className="custom-dropdown">
               <div
-                className="arrow"
+                className="dropdown-top"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              ></div>
-            </div>
-
-            {isDropdownOpen && (
-              <div className="date-options">
-                {timeTypes
-                  .filter((type) => type !== timeType)
-                  .map((type) => (
-                    <span
-                      key={type}
-                      onClick={() => {
-                        setTimeType(type);
-                        setIsDropdownOpen(false);
-                      }}
-                    >
-                      {type}
-                    </span>
-                  ))}
+              >
+                <div className="selected-time">{timeType}</div>
+                <div className="dropdown-icon">
+                  {isDropdownOpen ? "⌄" : "⌃"}
+                </div>
               </div>
-            )}
+
+              {isDropdownOpen && (
+                <div className="dropdown-list">
+                  {timeTypes
+                    .filter((t) => t !== timeType)
+                    .map((t) => (
+                      <div
+                        key={t}
+                        className="dropdown-item"
+                        onClick={() => {
+                          setTimeType(t);
+                          setIsDropdownOpen(false);
+                        }}
+                      >
+                        {t}
+                      </div>
+                    ))}
+                </div>
+              )}
+            </div>
 
             <textarea
               placeholder="본문을 작성해주세요."
@@ -125,7 +127,7 @@ function Post() {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-            {title && content && (
+            {title.trim() && content.trim() && (
               <button className="submit-button" onClick={handleSubmit}>
                 작성하고 추억 확인하기
               </button>
@@ -138,3 +140,4 @@ function Post() {
 }
 
 export default Post;
+

@@ -2,163 +2,185 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
   font-family: 'Pretendard', sans-serif;
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 110px;
+  overflow: hidden;
 }
 
-.background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.profile-box {
+.editable-profile-box {
   display: flex;
   align-items: center;
-  padding: 20px;
-  margin: 100px auto 30px;
-  width: 326px;
-  border: 2px solid #fff;
-  border-radius: 17px;
-  background: rgba(0, 0, 0, 0.4);
-  box-sizing: border-box;
   gap: 20px;
+  padding: 20px;
+  border-radius: 17px;
+  border: 2px solid #FFFFFF;
+  background: linear-gradient(90deg, rgba(61, 66, 80, 0.78), rgba(82, 89, 108, 0.78));
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  width: 326px;
+  height: 95px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
-.cat-container {
+.image-wrapper {
   position: relative;
 }
 
 .cat-profile {
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
+  border-radius: 50%;
 }
 
-.profile-edit-icon {
+.pen-on-profile {
   position: absolute;
-  top: 0;
-  right: -10px;
+  top: 30px;
+  right: 3px;
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-.name-edit-icon {
+.editable-profile-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pen-on-name {
+  width: 14px;
+  height: 14px;
   margin-left: 5px;
-  width: 13px;
-  height: 13px;
   cursor: pointer;
 }
 
-.profile-text .name {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
+.nickname-inline-wrapper {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .nickname-input {
   background: none;
   border: none;
-  border-bottom: 1px solid white;
   color: white;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   outline: none;
-  width: 150px;
+  padding: 0;
+  margin: 0;
+  width: auto; 
+}
+
+.name-inline {
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 0.2ch;
 }
 
 .address {
-  font-size: 17px;
+  font-size: 13px;
   font-weight: 400;
+  margin-top: 3px;
 }
 
-.menu-item {
-  margin: 20px 33px 0;
-}
-
-.menu-text {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 6px;
-}
-
-.menu-divider {
-  height: 1px;
-  width: 100%;
-  background-color: #FFFFFF;
-}
-
-.edit-ok-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -10px;
-  margin-bottom: 20px;
-}
-
-.edit-ok-button img {
+.ok-button-wrapper {
+  position: fixed;
+  bottom: 550px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 236px;
-  height: 57px;
-  cursor: pointer;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.ok2 {
+  width: 300px;
+  height: 120px;
 }
 
 .ok-text {
   position: absolute;
-  top: 10px;
   color: black;
   font-weight: 700;
   font-size: 16px;
   pointer-events: none;
 }
 
-/* 로그아웃 모달 재사용 */
-.logout-modal {
+.profile-select-box {
   position: absolute;
-  top: 330px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 166px;
-  height: 110px;
-  z-index: 1000;
+  top: 130px;
+  width: 345px;
+  height: 268px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  z-index: 2;
 }
 
-.logout-box {
+.profile-background {
   position: absolute;
-  width: 166px;
-  height: 110px;
-  z-index: -1;
+  width: 345px;
+  height: 268px;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
 }
 
-.logout-text {
-  font-size: 16px;
-  font-weight: 500;
-  color: #000000;
-  margin-top: -5px;
-  margin-bottom: 10px;
-}
-
-.yes-button {
+.profile-cat-row {
   position: relative;
+  margin-top: 41px;
+  display: flex;
+  gap: 22px;
+  z-index: 2;
+}
+
+.profile-cat {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
   cursor: pointer;
+  background: white;
 }
 
-.yes-button img {
-  width: 49px;
-  height: 39px;
+.cat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.yes-text {
-  position: absolute;
-  top: 10px;
-  left: 17px;
-  font-weight: 700;
-  font-size: 16px;
-  color: #000000;
+.profile-caption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  line-height: 1.3;
 }
