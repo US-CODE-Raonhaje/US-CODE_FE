@@ -14,6 +14,7 @@ import { Routes, Route } from "react-router-dom";
 import Post from "./pages/Post";
 import Notification from "./pages/Notification";
 import PostDetail from "./pages/PostDetail";
+import Memories from "./pages/Memories";
 
 function App() {
   const [storyCount, setStoryCount] = useState(0);
@@ -31,7 +32,7 @@ function App() {
         path="/"
         element={
           <ProtectedRoute>
-            <Home storyCount={storyCount} />{" "}
+            <Home storyCount={storyCount} />
           </ProtectedRoute>
         }
       />
@@ -47,6 +48,7 @@ function App() {
       />
       <Route path="/mypage/posts" element={<MyPosts />}></Route>
       <Route path="/mypage/posts/:idx" element={<PostDetail />}></Route>
+      <Route path="/memory-photos" element={<Memories />}></Route>
     </Routes>
   );
 }
