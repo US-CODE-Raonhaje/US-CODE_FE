@@ -5,8 +5,8 @@ import arrow from "../../assets/icons/downarrow.png";
 export default function LoginLocationPage() {
   const APP_KEY = import.meta.env.VITE_KAKAO_MAPS_API_KEY;
   const [address, setAddress] = useState("");
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  // const [latitude, setLatitude] = useState(null);
+  // const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState("");
   const location = useLocation();
   const { username = "", age = "" } = location.state || {};

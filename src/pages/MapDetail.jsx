@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MapBox from "../components/MapBox";
 import { FaArrowLeft, FaUser } from "react-icons/fa";
@@ -216,8 +216,8 @@ function MapDetail() {
                   zIndex: 1,
                 }}
               />
-              <div 
-                onClick={() => navigate("/post")}     
+              <div
+                onClick={() => navigate("/post")}
                 style={{
                   width: "236px",
                   height: "43px",
