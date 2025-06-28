@@ -20,14 +20,12 @@ export default function Memories() {
     const accessToken = localStorage.getItem("accessToken");
     const refreshToken = localStorage.getItem("refreshToken");
     axios
-      .get(
-        "http://34.64.144.67/api/v1/pictures" //{
-        //     headers: {
-        //       Authorization: `Bearer ${accessToken}`,
-        //       "Refresh-Token": refreshToken,
-        //     },
-        //   }
-      )
+      .get("http://34.64.144.67/api/v1/picture", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Refresh-Token": refreshToken,
+        },
+      })
       .then((res) => {
         setPhotos(res.data.pictures);
       })
@@ -48,15 +46,13 @@ export default function Memories() {
               navigate(-1);
             }}
           />
-          <p className="font-bold text-2xl ml-2 ">내 추억의 사진들</p>
+          <p className="font-bold text-2xl ml-2">내 추억의 사진들</p>
         </div>
-        <div className="h-[700px] mt-10 rounded-xl w-80 bg-gradient-to-t from-[#493F5D] via-[#282635] to-[#16161B] border mx-auto flex flex-wrap items-start overflow-y-auto p-4 gap-x-5 gap-y-1">
+        <div className="h-[700px] mt-10 rounded-xl w-80 bg-gradient-to-t from-[#493F5D] via-[#282635] to-[#16161B] border mx-auto flex flex-wrap items-start overflow-y-auto p-2 gap-x-2 gap-y-1">
           {photos.map((photo, idx) => (
             <div
               key={idx}
-              onClick={() => {
-                setSelectedPhoto(photo.imageUrl);
-              }}
+              onClick={() => setSelectedPhoto(photo.imageUrl)}
               className="w-[45px] h-[45px] bg-white rounded-lg flex items-center justify-center shadow-md"
             >
               <img
@@ -70,7 +66,7 @@ export default function Memories() {
           <>
             <FlipCard
               onClose={() => setSelectedPhoto(null)}
-              description={"hello"}
+              description={"hello"} //여기에 뒷면 들어갈거
             >
               <img
                 src={selectedPhoto}
