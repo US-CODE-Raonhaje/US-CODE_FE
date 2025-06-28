@@ -79,7 +79,7 @@ export default function LoginProfilePage() {
               <p className="mt-3 text-base text-white">{address}</p>
             </div>
           ) : (
-            <button //필드이 입력 안되있으면
+            <button //필드가 입력 안되있으면
               className="mt-10 w-full max-w-xs p-5 text-center text-xl text-bold rounded-lg border-none
               bg-gray-400 shadow-[inset_-8px_-8px_17px_rgba(0,0,0,0.7)]"
             >

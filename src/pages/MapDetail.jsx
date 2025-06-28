@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MapBox from "../components/MapBox";
 import HeaderBar from "../components/HeaderBar";
@@ -11,13 +11,18 @@ import BottomNavBar from "../components/BottomNavBar";
 import pouch from "../assets/icons/pouch.png";
 import map2 from "../assets/icons/map2.png";
 
-
 function MapDetail() {
   const navigate = useNavigate();
   const [map2MarkerVisible, setMap2MarkerVisible] = useState(false);
   const [pouchMarkerVisible, setPouchMarkerVisible] = useState(true);
-  const [map2MarkerPosition, setMap2MarkerPosition] = useState({ x: 150, y: 300 });
-  const [pouchMarkerPosition, setPouchMarkerPosition] = useState({ x: 250, y: 300 });
+  const [map2MarkerPosition, setMap2MarkerPosition] = useState({
+    x: 150,
+    y: 300,
+  });
+  const [pouchMarkerPosition, setPouchMarkerPosition] = useState({
+    x: 250,
+    y: 300,
+  });
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showDetailBox, setShowDetailBox] = useState(false);
   const [currentAddress, setCurrentAddress] = useState("");
@@ -64,10 +69,25 @@ function MapDetail() {
 
   return (
     <div
-      style={{ width: "100%", height: "100vh", position: "relative", backgroundColor: "#EDEDED", overflow: "hidden" }}
+      style={{
+        width: "100%",
+        height: "100vh",
+        position: "relative",
+        backgroundColor: "#EDEDED",
+        overflow: "hidden",
+      }}
       onClick={handleMapClick}
     >
-      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+        }}
+      >
         <MapBox center={uiseong} />
       </div>
 
@@ -79,7 +99,7 @@ function MapDetail() {
           icon={pouch}
           position={pouchMarkerPosition}
           onClick={() => {
-            setShowDetailBox(true); 
+            setShowDetailBox(true);
             setShowRegisterModal(false);
           }}
           onDrag={handleDrag(setPouchMarkerPosition)}
@@ -98,14 +118,27 @@ function MapDetail() {
         />
       )}
 
-      {showRegisterModal && <RegisterModal currentAddress={currentAddress} onConfirm={() => {
-       navigate("/post");
-       setShowRegisterModal(false);  
-      }} 
-      />}
+      {showRegisterModal && (
+        <RegisterModal
+          currentAddress={currentAddress}
+          onConfirm={() => {
+            navigate("/post");
+            setShowRegisterModal(false);
+          }}
+        />
+      )}
       {showDetailBox && <DetailBox />}
 
-      <div style={{ position: "fixed", left: "41px", top: "779px", width: "321px", height: "62px", zIndex: 100 }}>
+      <div
+        style={{
+          position: "fixed",
+          left: "41px",
+          top: "779px",
+          width: "321px",
+          height: "62px",
+          zIndex: 100,
+        }}
+      >
         <BottomNavBar />
       </div>
     </div>
