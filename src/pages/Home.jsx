@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import BottomNavBar from "../components/BottomNavBar";
@@ -39,11 +39,7 @@ function Home({ storyCount }) {
       </div>
 
       {storyCount === 0 && (
-        <img
-          src={storyImage}
-          alt="등록 안내"
-          className="no-story-img"
-        />
+        <img src={storyImage} alt="등록 안내" className="no-story-img" />
       )}
 
       <div className="cat-text">
@@ -71,6 +67,8 @@ function Home({ storyCount }) {
           width: "297px",
           height: "303px",
           borderRadius: "42px",
+          border: "3px solid #FFFFFF",
+          backgroundColor: "#1e1e1e",
           border: "3px solid #FFFFFF",
           backgroundColor: "#1e1e1e",
           overflow: "hidden",

@@ -48,8 +48,15 @@ function MyPage() {
         </div>
       </div>
 
-      <div className="menu-item" onClick={() => navigate("/my-posts")}>
-        <div className="menu-text">내가 쓴 글</div>
+      <div className="menu-item">
+        <div
+          className="menu-text"
+          onClick={() => {
+            navigate("/mypage/posts");
+          }}
+        >
+          내가 쓴 글
+        </div>
         <div className="menu-divider"></div>
       </div>
 
