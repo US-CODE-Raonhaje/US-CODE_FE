@@ -16,9 +16,16 @@ export default function KakaoRedirectPage() {
     }
 
     if (code) {
-      console.log(code);
+      const clientSecret = import.meta.env.VITE_KAKAO_CLIENT_SECRET;
       axios
-        .post(`http://34.64.144.67/api/v1/auth/kakao?code=${code}`)
+        .get(
+          `http://34.64.144.67/api/v1/auth/kakao/callback?code=${code}&client_secret=${clientSecret}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           const { accessToken, refreshToken, isAdditionalInfoRequired } =
             res.data;

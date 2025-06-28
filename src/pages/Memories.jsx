@@ -48,18 +48,20 @@ export default function Memories() {
           />
           <p className="font-bold text-2xl ml-2">내 추억의 사진들</p>
         </div>
-        <div className="h-[700px] mt-10 rounded-xl w-80 bg-gradient-to-t from-[#493F5D] via-[#282635] to-[#16161B] border mx-auto flex flex-wrap items-start overflow-y-auto p-2 gap-x-2 gap-y-1">
+        <div className="h-[700px] mt-10 rounded-xl w-80 bg-gradient-to-t from-[#493F5D] via-[#282635] to-[#16161B] border mx-auto flex flex-wrap justify-center items-start overflow-y-auto p-2 gap-x-6">
           {photos.map((photo, idx) => (
-            <div
-              key={idx}
-              onClick={() => setSelectedPhoto(photo.imageUrl)}
-              className="w-[45px] h-[45px] bg-white rounded-lg flex items-center justify-center shadow-md"
-            >
-              <img
-                src={photo.imageUrl}
-                className="w-[45px] h-[45px] object-cover rounded-md cursor-pointer"
-              />
-            </div>
+            <>
+              <div
+                key={idx}
+                onClick={() => setSelectedPhoto(photo.imageUrl)}
+                className="w-[45px] h-[45px]  bg-white rounded-lg flex items-center -mb-2 justify-center shadow-md"
+              >
+                <img
+                  src={photo.imageUrl}
+                  className="w-[45px] h-[45px] object-cover rounded-md cursor-pointer"
+                />
+              </div>
+            </>
           ))}
         </div>
         {selectedPhoto && (
