@@ -5,7 +5,6 @@ export default function LoginPage() {
     <>
       <div className="w-screen h-screen bg-Background flex flex-col">
         <div className="flex-1 "></div>
-        <KakaoBtn />
         <GoogleBtn />
       </div>
     </>

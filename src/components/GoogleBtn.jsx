@@ -1,16 +1,27 @@
-import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 export default function GoogleBtn() {
+  const handleGoogleLogin = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/oauth2/authorization/google"
+      );
+      const { accessToken, refreshToken } = res.data;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      // 필요하다면 로그인 후 이동
+      window.location.href = "/";
+    } catch (err) {
+      alert("구글 로그인 실패");
+    }
+  };
+
   return (
-    <GoogleLogin
-      onSuccess={(credentialResponse) => {
-        // credentialResponse.credential (JWT) 백엔드로 전달
-        console.log(credentialResponse);
-      }}
-      onError={() => {
-        alert("구글 로그인 실패");
-      }}
-      useOneTap // 원탭 로그인 옵션(선택)
-    />
+    <button
+      onClick={handleGoogleLogin}
+      className="bg-white text-black px-4 py-2 rounded shadow mt-4"
+    >
+      구글로 로그인
+    </button>
   );
 }
