@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/Post.css";
 import boxImage from "../assets/images/box.png";
 import resultImage from "../assets/images/Rec.png";
@@ -83,7 +83,6 @@ function Post() {
         ) : (
           <>
             <input
-              type="text"
               placeholder="제목"
               className="title-input"
               value={title}
@@ -105,17 +104,17 @@ function Post() {
               {isDropdownOpen && (
                 <div className="dropdown-list">
                   {timeTypes
-                    .filter((type) => type !== timeType)
-                    .map((type) => (
+                    .filter((t) => t !== timeType)
+                    .map((t) => (
                       <div
-                        key={type}
+                        key={t}
                         className="dropdown-item"
                         onClick={() => {
-                          setTimeType(type);
+                          setTimeType(t);
                           setIsDropdownOpen(false);
                         }}
                       >
-                        {type}
+                        {t}
                       </div>
                     ))}
                 </div>
@@ -141,3 +140,4 @@ function Post() {
 }
 
 export default Post;
+

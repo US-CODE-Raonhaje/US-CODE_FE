@@ -28,7 +28,7 @@ function MyPageEditable() {
 
   const handleProfileEdit = () => {
     setIsProfileChoosing(true);
-    setShowOkButton(false); 
+    setShowOkButton(false);
   };
 
   const handleNameChange = (e) => {
@@ -38,10 +38,8 @@ function MyPageEditable() {
   const handleCatClick = (catId) => {
     if (catId === "cat4") {
       setSelectedCat("cat6");
-      navigate("/cat6page");
     } else if (catId === "cat5") {
       setSelectedCat("cat7");
-      navigate("/cat7page");
     }
   };
 
@@ -53,7 +51,12 @@ function MyPageEditable() {
       <div className="editable-profile-box">
         <div className="image-wrapper">
           <img src={catPro} alt="프로필" className="cat-profile" />
-          <img src={pen} alt="펜" className="pen-on-profile" onClick={handleProfileEdit} />
+          <img
+            src={pen}
+            alt="펜"
+            className="pen-on-profile"
+            onClick={handleProfileEdit}
+          />
         </div>
         <div className="editable-profile-text">
           <div className="name-wrapper">
@@ -64,10 +67,12 @@ function MyPageEditable() {
                   value={nickname}
                   onChange={handleNameChange}
                   className="nickname-input"
+                  size={nickname.length || 1} 
                 />
                 <span className="name-inline">님</span>
-              </div>
-            ) : (
+              </div> ) 
+              : 
+            (
               <>
                 <span className="name">{nickname}님</span>
                 <img
@@ -96,10 +101,22 @@ function MyPageEditable() {
           <div className="profile-cat-row">
             <div className="cat-container">
               <img src={cat3} alt="기본" className="profile-cat" />
-              <div className="profile-caption">이미 사용중인<br />프로필입니다.</div>
+              <div className="profile-caption">
+                이미 사용중인<br />프로필입니다.
+              </div>
             </div>
-            <img src={selectedCat === "cat6" ? cat6 : cat4} alt="cat4" className="profile-cat" onClick={() => handleCatClick("cat4")} />
-            <img src={selectedCat === "cat7" ? cat7 : cat5} alt="cat5" className="profile-cat" onClick={() => handleCatClick("cat5")} />
+            <img
+              src={selectedCat === "cat6" ? cat6 : cat4}
+              alt="cat4"
+              className="profile-cat"
+              onClick={() => handleCatClick("cat4")}
+            />
+            <img
+              src={selectedCat === "cat7" ? cat7 : cat5}
+              alt="cat5"
+              className="profile-cat"
+              onClick={() => handleCatClick("cat5")}
+            />
           </div>
         </div>
       )}

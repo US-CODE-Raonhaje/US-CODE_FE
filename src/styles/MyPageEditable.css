@@ -77,9 +77,10 @@
 }
 
 .nickname-inline-wrapper {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 3px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .nickname-input {
@@ -89,15 +90,15 @@
   font-size: 16px;
   font-weight: 700;
   outline: none;
-  width: 90px;
   padding: 0;
   margin: 0;
+  width: auto; 
 }
 
 .name-inline {
   font-size: 16px;
   font-weight: 700;
-  margin-left: 2px;
+  margin-left: 0.2ch;
 }
 
 .address {
@@ -112,7 +113,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 236px;
-  height: 43px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,8 +121,8 @@
 }
 
 .ok2 {
-  width: 236px;
-  height: 43px;
+  width: 300px;
+  height: 120px;
 }
 
 .ok-text {
